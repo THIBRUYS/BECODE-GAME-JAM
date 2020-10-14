@@ -30,7 +30,7 @@ end
 } 
 A. Mouvement
 1. if press [startButton]
-function startButtonDisappear () { the start button disppears end },
+function startButtonDisappear () { startButton.hide },
 
 function snakeAppear () { the snake appears }
 
@@ -72,20 +72,93 @@ function avanceToujours () { snake will keep moving forward }
 
 // Appuyer sur la flèche du haut et le serpent tourne en haut. //
 
-6. Si le serpent avance contre un mur il ressort de l'autre coté.
-7. Possibilité de mettre le jeu en pause avec backspace.
+6. if snake pos = playGround border 
+function gameOver { end the game and display gameTime and gameScore }
+
+// Si le serpent avance contre un mur il meurt //
+
+7. if press [backspace] 
+function pause { pause the game }
+
+// Possibilité de mettre le jeu en pause avec backspace. //
 
 
 B. Interactions
 -Serpent
-1. Quand le serpent mange une pomme, il s'agrandit de x pixels en longueur et le score augmente de x points.
-2. Quand le serpent a mangé x pommes il passe au niveau suivant (il va dans un autre field d'une autre couleur et plus rapide).
-3. Si le serpent se touche lui même il meurt. (game over).
-4. Lorsqu'on meurt message game over avec le score et le temps.
-5. Lorsqu'on gagne message avec victoire avec le score et le temps.
+1. if pos serpent = pos apple 
+function snakeGrow { adds a tail element to snake }
+
+function appleDisappear {}
+
+function appleAppear {}
+
+// Quand le serpent mange une pomme, il s'agrandit de x pixels en longueur et le score augmente de x points. //
+
+
+2. Bonus (Quand le serpent a mangé x pommes il passe au niveau suivant (il va dans un autre field d'une autre couleur et plus rapide).
+
+3. if snake crosses snake 
+function gameOver { end the game and display gameTime and gameScore }
+
+// Si le serpent se touche la partie se finit //
+
+5. Bonus (Lorsqu'on gagne message avec victoire avec le score et le temps.)
+
+6. Bonus (If timer ends)
+function gameWin { display score and display "you survived"}
 
 -Son
 1. Petit son quand il mange.
 2. Petit son quand il meurt.
 3. Musique pendant la partie.
 3. Dernier niveau musique hard rock.
+
+
+
+snake {
+    function snakeAppear () { the snake appears }
+    function avanceToujours () { snake will keep moving forward }
+    if press [left arrow] 
+function turnLeft () { snake turns to the left end }
+
+function avanceToujours () { snake will keep moving forward }
+
+// Appuyer sur la flèche de gauche et le serpent tourne à gauche. //
+
+4. if press [down arrow] 
+function turnDown () { snake turns to the bottom end }
+
+function avanceToujours () { snake will keep moving forward }
+
+// Appuyer sur la flèche du bas et le serpent tourne en bas //
+
+5. if press [up arrow] 
+function turnUp () { snake turns to the top end }
+
+function avanceToujours () { snake will keep moving forward }
+
+// Appuyer sur la flèche du haut et le serpent tourne en haut. //
+
+6. if snake pos = playGround border 
+function gameOver { end the game and display gameTime and gameScore }
+
+1. if pos serpent = pos apple 
+function snakeGrow { adds a tail element to snake }
+
+}
+
+apple {
+    function appleDisappear {}
+
+    function appleAppear {}
+}
+
+background {
+    define limits
+
+    gamestart ()
+
+    gamePause ()
+    
+    gameOver  ()
+}
