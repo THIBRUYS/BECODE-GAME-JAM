@@ -147,7 +147,7 @@ function snakeGrow { adds a tail element to snake }
 
 }
 
-pineapple{
+apple{
     function appleDisappear {}
 
     function appleAppear {}
