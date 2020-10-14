@@ -1,14 +1,15 @@
 becode game jam
 
 HTML
-1. Délimiter une zone de jeu en forme de carré. 
-2. Créer un serpent de départ. Et le mettre sur le terrain
-3. Mettre une pomme sur le terrain aléatoirement.
-4. Bouton "start" pour commencer la partie.
-5. Bouton "cancel" pour arrêter la partie.
-6. Compteur du score.
-7. Level. (nombre max de niveaux)
-8. Timer.
+1. Délimiter une zone de jeu en forme de carré. (playGround)
+2. Créer un serpent de départ. Et le mettre sur le terrain (snake)
+3. Mettre une pomme sur le terrain aléatoirement. (apple)
+4. Bouton "start" pour commencer la partie. (startButton)
+5. Bouton "cancel" pour arrêter la partie. (cancelButton)
+6. Compteur du score. (scoreCount)
+7. Level. (nombre max de niveaux) (levelCount)
+8. Timer. (timerCount)
+9. infos (commandes pour jouer)
 
 CSS
 1. Background noir.
@@ -18,13 +19,59 @@ CSS
  
 
 JavaScript
+function lcmNaive(Argument one, Argument two){ 
 
+    Calculate the lowest common variable of Argument 
+    1 and Argument 2 by dividing their product by their 
+    Greatest common divisor product 
+
+    return lowest common multiple 
+end 
+} 
 A. Mouvement
-1. Le serpent avance toujours tout seul, donner une direction le fait changer de sens.
-2. Appuyer sur la flèche de droite et le serpent tourne à droite.
-3. Appuyer sur la flèche de gauche et le serpent tourne à gauche.
-4. Appuyer sur la flèche du bas et le serpent tourne en bas.
-5. Appuyer sur la flèche du haut et le serpent tourne en haut.
+1. if press [startButton]
+function startButtonDisappear () { the start button disppears end },
+
+function snakeAppear () { the snake appears }
+
+function avanceToujours () { snake will keep moving forward },
+
+function musicStart () { music starts } 
+
+function startTimer () { start the timer }
+
+function appleAppear () { puts an apple randomly on the playGround end }
+
+// Le serpent avance toujours tout seul, donner une direction le fait changer de sens. //
+
+2. if press [right arrow] 
+function turnRight () { snake turns to the right end }
+
+function avanceToujours () { snake will keep moving forward }
+
+// Appuyer sur la flèche de droite et le serpent tourne à droite. //
+
+3. if press [left arrow] 
+function turnLeft () { snake turns to the left end }
+
+function avanceToujours () { snake will keep moving forward }
+
+// Appuyer sur la flèche de gauche et le serpent tourne à gauche. //
+
+4. if press [down arrow] 
+function turnDown () { snake turns to the bottom end }
+
+function avanceToujours () { snake will keep moving forward }
+
+// Appuyer sur la flèche du bas et le serpent tourne en bas //
+
+5. if press [up arrow] 
+function turnUp () { snake turns to the top end }
+
+function avanceToujours () { snake will keep moving forward }
+
+// Appuyer sur la flèche du haut et le serpent tourne en haut. //
+
 6. Si le serpent avance contre un mur il ressort de l'autre coté.
 7. Possibilité de mettre le jeu en pause avec backspace.
 
