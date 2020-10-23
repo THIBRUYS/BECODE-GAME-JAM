@@ -10,7 +10,7 @@ function game(onload) {
 
 
     function durationGame (pos_snake, side) {
-        if ( button pause != true || status = lost ) {
+        if ( button pause != true || status != lost || status != win) {
           getPosition(),
           snakeTurn(side),
           getStatus(pos_snake_start, pos_snake_end),
