@@ -10,14 +10,12 @@ function game(onload) {
 
 
     function durationGame (pos_snake, side) {
-        getPosition(),
-        snakeTurn(side),
-        getStatus(pos_snake_start, pos_snake_end),
-        timer()
-
-        if press [backspace] {
-            function stopDurationGame()
-          }
+        if ( button pause != true || status = lost ) {
+          getPosition(),
+          snakeTurn(side),
+          getStatus(pos_snake_start, pos_snake_end),
+          timer()
+        } 
       }
 
     function getPosition() { return pos_snake_start, pos_snake_end } 
@@ -93,7 +91,6 @@ function game(onload) {
       function snakeDisappear () { },
       function playGroundDisappear () { }
       function musicEnd () { music starts },
-      function stopDurationGame() { }
 
       function displayScoreTable () {}
       function startButtonAppear () { startButton.display }
@@ -105,6 +102,4 @@ function game(onload) {
         function snakeDisappear () { },
         function playGroundDisappear () { }
         function musicEnd () { music starts },
-        function stopDurationGame() { }
-
 }
