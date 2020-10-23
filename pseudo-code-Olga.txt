@@ -16,7 +16,7 @@ function game(onload) {
         timer()
 
         if press [backspace] {
-            function pause()
+            function stopDurationGame()
           }
       }
 
@@ -88,8 +88,6 @@ function game(onload) {
             function gameOver()
 
     }
-
-    function pause() { pause the game  }
 
     function gameOver () {
       function snakeDisappear () { },
