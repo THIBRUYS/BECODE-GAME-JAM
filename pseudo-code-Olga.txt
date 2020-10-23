@@ -1,0 +1,96 @@
+function game(onload) {
+
+    function start(click StartButton) {
+      function startButtonDisappear () { startButton.hide },
+      function snakeAppear () { the snake appears },
+      function appleAppear () { puts an apple randomly on the playGround end },
+      function snakeMoveForward () { snake will keep moving forward },
+      function musicStart () { music starts },
+      function startTimer () { start the timer }
+    }
+
+    function getStatus(pos snake) {
+
+      if (size snake = x) {
+        status = win
+
+      } else if (pos snake = pos border) {
+          status = lost
+
+        } else if (pos snake = pos apple) {
+            function snakeGrow { adds a tail element to snake }
+            function appleDisappear () { }
+            function appleAppear ()
+
+          } else if (pos snake = pos snake) {
+              status = lost
+
+            } else {
+              function snakeMoveForward () { snake will keep moving forward }
+            }
+      return status
+    }
+
+    function main(status) {
+      while((status != win) || (status !=lost) {
+          if press [right arrow] {
+            function turnRight () { snake turns to the right end }
+            function snakeMoveForward () { snake will keep moving forward }
+            function getStatus()
+          }
+
+          if press [left arrow] {
+            function turnRight () { snake turns to the left end }
+            function snakeMoveForward () { snake will keep moving forward }
+            function getStatus()
+          }
+
+          if press [top arrow] {
+            function turnRight () { snake turns to the top end }
+            function snakeMoveForward () { snake will keep moving forward }
+            function getStatus()
+          }
+
+          if press [bottom arrow] {
+            function turnRight () { snake turns to the bottom end }
+            function snakeMoveForward () { snake will keep moving forward }
+            function getStatus()
+          }
+
+          if press [backspace] {
+            function pause()
+          }
+      })
+
+      if(status = win) {
+        function gameWin()
+      }
+
+      if (status = lost) {
+        function gameOver()
+
+    }
+
+    function pause(){
+      pause the game
+    }
+
+    function gameOver () {
+      function snakeDisappear () { },
+      function playGroundDisappear () { }
+      function musicEnd () { music starts },
+      function timerEnd () { start the timer }
+
+      function displayScoreTable () {}
+      function startButtonAppear () { startButton.display }
+    }
+
+    function gameWin { display score and display "you survived"}
+        function startButtonAppear () { startButton.display }
+
+        function snakeDisappear () { },
+        function playGroundDisappear () { }
+        function musicEnd () { music starts },
+        function timerEnd () { start the timer }
+
+}

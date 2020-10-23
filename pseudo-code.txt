@@ -34,7 +34,7 @@ function startButtonDisappear () { startButton.hide },
 
 function snakeAppear () { the snake appears }
 
-function avanceToujours () { snake will keep moving forward },
+function snakeStart () { snake will keep moving forward },
 
 function musicStart () { music starts } 
 
