@@ -12,16 +12,37 @@ const snake = {
   dx: 2,
   dy: 2,
 }
+
+const apple = {
+  h: appleRandom(),
+  v: appleRandom(),
+  width: 20,
+  height: 20,
+}
+
 // vars for center of playground
 //const centerX = canvas.width / 2;
 //const centerY = canvas.height / 2;
 
 // draw snake
+// function draw(drawSnake,drawApple){
 function drawSnake() {
   //ctx.beginPath();
-  ctx.fillRect(snake.x, snake.y, snake.width, snake.height);
   ctx.fillStyle = 'green';
+  ctx.fillRect(snake.x, snake.y, snake.width, snake.height);
+  
 }
+function drawApple() {
+  //ctx.beginPath();
+  ctx.fillStyle = 'red';
+  ctx.fillRect(apple.h, apple.v, apple.width, apple.height);
+ 
+}
+function appleRandom(){
+  return Math.floor(Math.random() * 580);   
+}
+
+// }
 //control the snake
 
 let d;
@@ -48,9 +69,11 @@ function direction(event){
 
 // animation for move snake along border
 function update() {
+  
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+  
   drawSnake();
+  
   // change position
   if( d == "LEFT") snake.x -= snake.dx;
   if( d == "UP") snake.y -= snake.dy;
@@ -63,11 +86,14 @@ function update() {
         snake.x = 0;}
 
   //requestAnimationFrame(update);
+
 }
 
-
+function updateGame(){
+return update(),drawApple();
+}
 //update();
-setInterval(update,5);
+setInterval(updateGame,5);
 
 
 //switch mode
@@ -78,3 +104,4 @@ function switchMode(event){
   
   }
 }
+
