@@ -113,10 +113,25 @@ function gameWin { display score and display "you survived"}
 3. Musique pendant la partie.
 3. Dernier niveau musique hard rock.
 
+????????????????????
+
+
+
+
+
 
 
 snake {
     function snakeAppear () { the snake appears }
+
+    WHILE
+    IF/ELSE (move)
+    IF/ELSE (food)(no food)
+    LOOP to WHILE
+ 
+ 
+ 
+ 
     function avanceToujours () { snake will keep moving forward }
     if press [left arrow] 
 function turnLeft () { snake turns to the left end }
@@ -153,8 +168,11 @@ apple{
     function appleAppear {}
 }
 
+
+
+
 background {
-    define limits
+    define limits 
 
     gamestart ()
 
@@ -162,3 +180,12 @@ background {
     
     gameOver  ()
 }
+
+
+function MAIN
+
+//when the position of the snake is the same then the apple
+
+ function appleEat (){ 
+     score +10
+     } 
