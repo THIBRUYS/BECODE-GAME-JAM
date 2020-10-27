@@ -60,7 +60,14 @@ function update() {
   // detected side walls
   if(snake.x + snake.width > canvas.width ||
       snake.x + snake.width < snake.width) {
-        snake.x = 0;}
+        snake.dx = 0;
+        alert("gameover")}
+        //replace alert with function gameover
+  if(snake.y + snake.height > canvas.height ||
+      snake.y + snake.height < snake.height) {
+        snake.dy = 0;
+      alert("gameover")}
+      //replace alert with function gameover
 
   //requestAnimationFrame(update);
 }
