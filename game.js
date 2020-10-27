@@ -8,6 +8,7 @@ const snake = {
   y: 300,
   width: 20,
   height: 20,
+  // step for move on playground
   dx: 2,
   dy: 2,
 }
