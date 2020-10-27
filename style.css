@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #98fa98;
+  display: flex;
+  flex-direction: column;
+  font-family: 'B612', sans-serif;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 3em;
+}
+h1 {
+  display: flex;
+  font-size: 180px;
+  color: rgb(247, 23, 90);
+  -webkit-text-stroke: black 1px;
+}
+
+#snake-img {
+  align-self: flex-start;
+  margin: auto;
+}
+
+#canvas {
+  border-radius: 5px;
+  background-color: yellow;
+}
