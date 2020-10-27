@@ -27,6 +27,23 @@ h1 {
 }
 
 #canvas {
+  
   border-radius: 5px;
   background-color: yellow;
+}
+.score{
+  display:flex;
+  flex-direction: column;
+  
+ 
+  
+}
+.info{
+  color: white;
+  display: flex;
+  align-items: center;
+  border-bottom: 5px solid red;
+  width: 600px;
+  height: 50px;
+  background-color: rgb(98, 124, 102);
 }

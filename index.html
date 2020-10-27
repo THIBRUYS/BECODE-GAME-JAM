@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,21 @@
   <link rel="stylesheet" href="./style.css">
   <link href="https://fonts.googleapis.com/css2?family=B612:ital,wght@1,700&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <h1>Snake</h1>
   <div>
     <!-- Add image of snake -->
-  <img id="snake-img" src="./snake-img.png" width="550px" alt="">
-  <canvas id="canvas" width="600px" height="600px"></canvas>
+    <img id="snake-img" src="./snake-img.png" width="550px" alt="">
+    <div class="score">
+      <div class="info">
+        <h3 >Score :&nbsp</h3>
+        <h3 id="displayScore">xyz</h3>
+      </div>
+      <canvas id="canvas" width="600px" height="600px"></canvas>
+    </div>
   </div>
   <script src="./game.js"></script>
 </body>
+
 </html>
