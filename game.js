@@ -4,20 +4,18 @@ const ctx = canvas.getContext('2d');
 
 // coordinates for snake
 const snake = {
-  x: 150,
+  x: 300,
   y: 300,
   width: 20,
   height: 20,
   dx: 2,
   dy: 2,
 }
-// vars for center of playground
-const centerX = canvas.width / 2;
-const centerY = canvas.height / 2;
+
 
 // draw snake
 function drawSnake() {
-  ctx.beginPath();
+  
   ctx.fillRect(snake.x, snake.y, snake.width, snake.height);
   ctx.fillStyle = 'green';
 }
