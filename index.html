@@ -10,18 +10,20 @@
 </head>
 
 <body>
-  <h1>Snake</h1>
-  <div>
+  <div class="snake">
+    <h1>Snake</h1>
+
     <!-- Add image of snake -->
-    <img id="snake-img" src="./snake-img.png" width="550px" alt="">
-    <div class="score">
-      <div class="info">
-        <h3 >Score :&nbsp</h3>
-        <h3 id="displayScore">xyz</h3>
-      </div>
-      <canvas id="canvas" width="600px" height="600px"></canvas>
-    </div>
+    <img id="snake-img" src="./snake-img.png" alt="">
   </div>
+  <div class="score">
+    <div class="info">
+      <h3>Score :&nbsp</h3>
+      <h3 id="displayScore">xyz</h3>
+    </div>
+    <canvas id="canvas" width="600px" height="600px"></canvas>
+  </div>
+
   <script src="./game.js"></script>
 </body>
 

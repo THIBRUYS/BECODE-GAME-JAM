@@ -6,8 +6,7 @@
 
 body {
   background-color: #98fa98;
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
   font-family: 'B612', sans-serif;
   align-items: center;
   justify-content: center;
@@ -15,13 +14,14 @@ body {
   margin: 3em;
 }
 h1 {
-  display: flex;
+  margin: auto;
   font-size: 180px;
   color: rgb(247, 23, 90);
   -webkit-text-stroke: black 1px;
 }
 
 #snake-img {
+  width: 90%;
   align-self: flex-start;
   margin: auto;
 }
@@ -34,6 +34,7 @@ h1 {
 .score{
   display:flex;
   flex-direction: column;
+  margin-left: 20px;
   
  
   
@@ -46,4 +47,8 @@ h1 {
   width: 600px;
   height: 50px;
   background-color: rgb(98, 124, 102);
+}
+.snake{
+  display: flex;
+  flex-direction: column;
 }
