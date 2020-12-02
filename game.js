@@ -2,7 +2,12 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
+//declare constants
+const dim = 20;
+
+
 // coordinates for snake
+/*
 const snake = {
   x: 150,
   y: 300,
@@ -12,6 +17,7 @@ const snake = {
   dx: 2,
   dy: 2,
 }
+*/
 
 const apple = {
   h: appleRandom(),
@@ -23,13 +29,47 @@ const apple = {
 // vars for center of playground
 //const centerX = canvas.width / 2;
 //const centerY = canvas.height / 2;
-
-// draw snake
-// function draw(drawSnake,drawApple){
+//create snake
+let snake = [];
+snake[0] ={
+  x: 160,
+  y: 330
+}
+//draw snake
 function drawSnake() {
   //ctx.beginPath();
+  /*
   ctx.fillStyle = 'green';
-  ctx.fillRect(snake.x, snake.y, snake.width, snake.height);
+  ctx.fillRect(snake[0].x, snake[0].y, 20, 20);
+  */
+  //changed
+  for( let i = 0; i < snake.length ; i++){
+    ctx.fillStyle = ( i == 0 )? "green" : "white";
+    ctx.fillRect(snake[i].x,snake[i].y,dim,dim);
+    
+    ctx.strokeStyle = "red";
+    ctx.strokeRect(snake[i].x,snake[i].y,dim,dim);
+    // change position
+  if( d == "LEFT") snake[0].x -= dim;
+  if( d == "UP") snake[0].y -= dim;
+  if( d == "RIGHT") snake[0].x += dim;
+  if( d == "DOWN") snake[0].y += dim;
+
+  // detected side walls
+  if(snake.x + snake.width > canvas.width ||
+      snake.x + snake.width < snake.width) {
+        snake.dx = 0;
+        alert("gameover")}
+        //replace alert with function gameover
+  if(snake.y + snake.height > canvas.height ||
+      snake.y + snake.height < snake.height) {
+        snake.dy = 0;
+      alert("gameover")}
+      //replace alert with function gameover
+
+  //requestAnimationFrame(update);
+
+}
   
 }
 function drawApple() {
@@ -39,7 +79,7 @@ function drawApple() {
  
 }
 function appleRandom(){
-  return Math.floor(Math.random() * 580);   
+  return Math.floor(Math.random()*28+1)*dim;  
 }
 
 // }
@@ -74,33 +114,13 @@ function update() {
   
   drawSnake();
   
-  // change position
-  if( d == "LEFT") snake.x -= snake.dx;
-  if( d == "UP") snake.y -= snake.dy;
-  if( d == "RIGHT") snake.x += snake.dx;
-  if( d == "DOWN") snake.y += snake.dy;
-
-  // detected side walls
-  if(snake.x + snake.width > canvas.width ||
-      snake.x + snake.width < snake.width) {
-        snake.dx = 0;
-        alert("gameover")}
-        //replace alert with function gameover
-  if(snake.y + snake.height > canvas.height ||
-      snake.y + snake.height < snake.height) {
-        snake.dy = 0;
-      alert("gameover")}
-      //replace alert with function gameover
-
-  //requestAnimationFrame(update);
-
 }
 
 function updateGame(){
 return update(),drawApple();
 }
 //update();
-setInterval(updateGame,5);
+setInterval(updateGame,100);
 
 
 //switch mode
