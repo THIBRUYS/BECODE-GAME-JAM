@@ -22,6 +22,7 @@ snake[0] = {
 //draw snake
 function drawSnake() {
  
+
   for (let i = 0; i < snake.length; i++) {
     ctx.fillStyle = (i == 0) ? "green" : "white";
     ctx.fillRect(snake[i].x, snake[i].y, dim, dim);
@@ -111,7 +112,7 @@ function updateGame() {
 setInterval(updateGame, 100);
 
 
-//switch mode start/pause game
+//switch mode
 document.addEventListener("keydown", switchMode);
 function switchMode(event) {
   let key = event.keyCode;
