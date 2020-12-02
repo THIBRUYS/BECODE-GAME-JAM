@@ -56,14 +56,14 @@ function drawSnake() {
   if( d == "DOWN") snake[0].y += dim;
 
   // detected side walls
-  if(snake.x + snake.width > canvas.width ||
-      snake.x + snake.width < snake.width) {
-        snake.dx = 0;
+  if(snake[0].x + dim > canvas.width ||
+      snake[0].x + dim < dim) {
+        // snake[0].dx = 0;
         alert("gameover")}
         //replace alert with function gameover
-  if(snake.y + snake.height > canvas.height ||
-      snake.y + snake.height < snake.height) {
-        snake.dy = 0;
+  if(snake[0].y + dim > canvas.height ||
+      snake[0].y + dim < dim) {
+        // snake[i].dy = 0;
       alert("gameover")}
       //replace alert with function gameover
 
