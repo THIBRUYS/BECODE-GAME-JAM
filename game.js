@@ -33,7 +33,7 @@ const apple = {
 let snake = [];
 snake[0] ={
   x: 160,
-  y: 330
+  y: 300
 }
 //draw snake
 function drawSnake() {
