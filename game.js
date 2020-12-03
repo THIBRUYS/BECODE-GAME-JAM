@@ -1,3 +1,4 @@
+
 // declare context
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
@@ -59,12 +60,28 @@ function drawSnake() {
   }
 
   // detected side walls
-  if (snakeX < 0 || snakeX > canvas.width - dim || snakeY < 0 || snakeY > canvas.height - dim) {
+  if (snakeX < 0 || snakeX > canvas.width - dim || snakeY < 0 || snakeY > canvas.height - dim || collision(newHead,snake)) {
 
     clearInterval(game);
     alert("game over!")   //here we need to replace alert with function gameover
-
+    // EndGame()
   }
+
+  // start modif nico
+  // if tete  touch body == die
+function collision(tete, corp){
+  for(let i = 0; i < corp.lenght; i++){
+    if(tete.x == corp[i].x && tete.y == corp[i].y){
+      return true;
+    }
+  }
+  return false;
+}
+  // end modif nico
+
+
+
+
   // snake growing 
   snake.unshift(newHead);
 }
