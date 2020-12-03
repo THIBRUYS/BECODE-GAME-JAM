@@ -5,12 +5,10 @@ const ctx = canvas.getContext('2d');
 //declare constants
 const dim = 20;
 
-
-const apple = {
-  h: appleRandom(),
-  v: appleRandom(),
-  width: 20,
-  height: 20,
+//create apple !!!changed
+let apple = {
+  x: appleRandom(),
+  y: appleRandom(),
 }
 
 //create snake
@@ -21,61 +19,70 @@ snake[0] = {
 }
 //draw snake
 function drawSnake() {
- 
 
   for (let i = 0; i < snake.length; i++) {
-    ctx.fillStyle = (i == 0) ? "green" : "white";
+    ctx.fillStyle = (i == 0) ? "ForestGreen" : "SeaGreen";
     ctx.fillRect(snake[i].x, snake[i].y, dim, dim);
 
-    //snake grow if eat apple
-    if(snake[0].x == apple.h && snake[0].y == apple.v){
-      snake.push(snake[1]);
-    }
-
-    ctx.strokeStyle = "red";
+    ctx.strokeStyle = (i == 0) ? "red" : "black";
     ctx.strokeRect(snake[i].x, snake[i].y, dim, dim);
-    // change position
-    if (d == "LEFT") snake[0].x -= dim;
-    if (d == "UP") snake[0].y -= dim;
-    if (d == "RIGHT") snake[0].x += dim;
-    if (d == "DOWN") snake[0].y += dim;
-
-    // detected side walls
-    if (snake[0].x + dim > canvas.width ||
-      snake[0].x < 0) {
-      snake[0].x = 100;
-      alert("gameover")
-    }
-    //replace alert with function gameover
-    if (snake[0].y + dim > canvas.height ||
-      snake[0].y < 0) {
-      snake[0].y = 100;
-      alert("gameover")
-    }
-    //replace alert with function gameover
-
-    //requestAnimationFrame(update);
-
   }
 
+  // old head position
+  let snakeX = snake[0].x;
+  let snakeY = snake[0].y;
+
+  // change direction
+  if (d == "LEFT") snakeX -= dim;
+  if (d == "UP") snakeY -= dim;
+  if (d == "RIGHT") snakeX += dim;
+  if (d == "DOWN") snakeY += dim;
+
+
+  // if the snake eats the food
+  if (snakeX == apple.x && snakeY == apple.y) {
+
+    apple = {
+      x: appleRandom(),
+      y: appleRandom(),
+    }
+    // we don't remove the tail
+  } else {
+    // removing the tail
+    snake.pop();
+  }
+ 
+  // adding new Head
+  let newHead = {
+    x: snakeX,
+    y: snakeY
+  }
+
+  // detected side walls
+  if (snakeX < 0 || snakeX > canvas.width - dim || snakeY < 0 || snakeY > canvas.height - dim) {
+
+    clearInterval(game);
+    alert("game over!")   //here we need to replace alert with function gameover
+
+  }
+  // snake growing 
+  snake.unshift(newHead);
 }
 
 
 function drawApple() {
-  //ctx.beginPath();
+  ctx.beginPath();
   ctx.fillStyle = 'red';
-  ctx.fillRect(apple.h, apple.v, apple.width, apple.height);
+  ctx.fillRect(apple.x, apple.y, dim, dim)
 
 }
+
 function appleRandom() {
-  return Math.floor(Math.random() * 28 + 1) * dim;
+  return Math.floor((Math.random() * 29) + 1) * dim;
 }
 
-// }
 //control the snake
-
 let d;
-
 document.addEventListener("keydown", direction);
 
 function direction(event) {
@@ -108,8 +115,8 @@ function update() {
 function updateGame() {
   return update(), drawApple();
 }
-//update();
-setInterval(updateGame, 100);
+//update every 100 microseconds;
+let game = setInterval(updateGame, 200);
 
 
 //switch mode
