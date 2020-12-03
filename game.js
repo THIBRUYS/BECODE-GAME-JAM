@@ -17,6 +17,14 @@ snake[0] = {
   x: 160,
   y: 300
 }
+//Score part
+let scoreArea = document.getElementById('displayScore');
+let score = 0;
+let scoreUpdate = () => {
+  score += 1;
+  scoreArea.innerHTML = score;
+}
+
 //draw snake
 function drawSnake() {
 
@@ -41,7 +49,8 @@ function drawSnake() {
 
   // if the snake eats the food
   if (snakeX == apple.x && snakeY == apple.y) {
-
+    scoreUpdate();
+    console.log(score)
     apple = {
       x: appleRandom(),
       y: appleRandom(),
