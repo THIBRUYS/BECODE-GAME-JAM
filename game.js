@@ -5,130 +5,126 @@ const ctx = canvas.getContext('2d');
 //declare constants
 const dim = 20;
 
-
-// coordinates for snake
-/*
-const snake = {
-  x: 150,
-  y: 300,
-  width: 20,
-  height: 20,
-  // step for move on playground
-  dx: 2,
-  dy: 2,
-}
-*/
-
-const apple = {
-  h: appleRandom(),
-  v: appleRandom(),
-  width: 20,
-  height: 20,
+//create apple !!!changed
+let apple = {
+  x: appleRandom(),
+  y: appleRandom(),
 }
 
-// vars for center of playground
-//const centerX = canvas.width / 2;
-//const centerY = canvas.height / 2;
 //create snake
 let snake = [];
-snake[0] ={
+snake[0] = {
   x: 160,
   y: 300
 }
 //draw snake
 function drawSnake() {
-  //ctx.beginPath();
-  /*
-  ctx.fillStyle = 'green';
-  ctx.fillRect(snake[0].x, snake[0].y, 20, 20);
-  */
-  //changed
-  for( let i = 0; i < snake.length ; i++){
-    ctx.fillStyle = ( i == 0 )? "green" : "white";
-    ctx.fillRect(snake[i].x,snake[i].y,dim,dim);
-    
-    ctx.strokeStyle = "red";
-    ctx.strokeRect(snake[i].x,snake[i].y,dim,dim);
-    // change position
-  if( d == "LEFT") snake[0].x -= dim;
-  if( d == "UP") snake[0].y -= dim;
-  if( d == "RIGHT") snake[0].x += dim;
-  if( d == "DOWN") snake[0].y += dim;
+
+  for (let i = 0; i < snake.length; i++) {
+    ctx.fillStyle = (i == 0) ? "ForestGreen" : "SeaGreen";
+    ctx.fillRect(snake[i].x, snake[i].y, dim, dim);
+
+    ctx.strokeStyle = (i == 0) ? "red" : "black";
+    ctx.strokeRect(snake[i].x, snake[i].y, dim, dim);
+  }
+
+  // old head position
+  let snakeX = snake[0].x;
+  let snakeY = snake[0].y;
+
+  // change direction
+  if (d == "LEFT") snakeX -= dim;
+  if (d == "UP") snakeY -= dim;
+  if (d == "RIGHT") snakeX += dim;
+  if (d == "DOWN") snakeY += dim;
+
+
+  // if the snake eats the food
+  if (snakeX == apple.x && snakeY == apple.y) {
+
+    apple = {
+      x: appleRandom(),
+      y: appleRandom(),
+    }
+    // we don't remove the tail
+  } else {
+    // removing the tail
+    snake.pop();
+  }
+ 
+  // adding new Head
+  let newHead = {
+    x: snakeX,
+    y: snakeY
+  }
 
   // detected side walls
-  if(snake[0].x + dim > canvas.width ||
-      snake[0].x + dim < dim) {
-        // snake[0].dx = 0;
-        alert("gameover")}
-        //replace alert with function gameover
-  if(snake[0].y + dim > canvas.height ||
-      snake[0].y + dim < dim) {
-        // snake[i].dy = 0;
-      alert("gameover")}
-      //replace alert with function gameover
+  if (snakeX < 0 || snakeX > canvas.width - dim || snakeY < 0 || snakeY > canvas.height - dim) {
 
-  //requestAnimationFrame(update);
+    clearInterval(game);
+    alert("game over!")   //here we need to replace alert with function gameover
 
+  }
+  // snake growing 
+  snake.unshift(newHead);
 }
-  
-}
+
+
 function drawApple() {
-  //ctx.beginPath();
+  ctx.beginPath();
   ctx.fillStyle = 'red';
-  ctx.fillRect(apple.h, apple.v, apple.width, apple.height);
- 
-}
-function appleRandom(){
-  return Math.floor(Math.random()*28+1)*dim;  
+  ctx.fillRect(apple.x, apple.y, dim, dim)
+
 }
 
-// }
+function appleRandom() {
+  return Math.floor((Math.random() * 29) + 1) * dim;
+}
+
 //control the snake
-
 let d;
+document.addEventListener("keydown", direction);
 
-document.addEventListener("keydown",direction);
+function direction(event) {
+  let key = event.keyCode;
+  if (key == 37 && d != "RIGHT") {
 
-function direction(event){
-    let key = event.keyCode;
-    if( key == 37 && d != "RIGHT"){
-        
-        d = "LEFT";
-    }else if(key == 38 && d != "DOWN"){
-        d = "UP";
-        
-    }else if(key == 39 && d != "LEFT"){
-        d = "RIGHT";
-    
-    }else if(key == 40 && d != "UP"){
-        d = "DOWN";
-        
-    }
+    d = "LEFT";
+  } else if (key == 38 && d != "DOWN") {
+    d = "UP";
+
+  } else if (key == 39 && d != "LEFT") {
+    d = "RIGHT";
+
+  } else if (key == 40 && d != "UP") {
+    d = "DOWN";
+
+  }
 }
 
 
 // animation for move snake along border
 function update() {
-  
+
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
+
   drawSnake();
-  
+
 }
 
-function updateGame(){
-return update(),drawApple();
+function updateGame() {
+  return update(), drawApple();
 }
-//update();
-setInterval(updateGame,100);
+//update every 100 microseconds;
+let game = setInterval(updateGame, 200);
 
 
 //switch mode
-document.addEventListener("keydown",switchMode);
-function switchMode(event){
+document.addEventListener("keydown", switchMode);
+function switchMode(event) {
   let key = event.keyCode;
-  if(key == 32){
-  
+  if (key == 32) {
+
   }
 }
 
