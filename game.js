@@ -2,8 +2,15 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-//declare constants
+//declare constants and variables
 const dim = 20;
+let move = new Audio();
+let eat = new Audio();
+let dead = new Audio();
+
+move.src = "sounds/move.mp3";
+eat.src = "sounds/eat.mp3";
+dead.src = "sounds/dead.mp3";
 
 //create apple !!!changed
 let apple = {
@@ -41,17 +48,19 @@ function drawSnake() {
 
   // if the snake eats the food
   if (snakeX == apple.x && snakeY == apple.y) {
+    eat.play();
 
     apple = {
       x: appleRandom(),
       y: appleRandom(),
     }
+   
     // we don't remove the tail
   } else {
     // removing the tail
     snake.pop();
   }
- 
+
   // adding new Head
   let newHead = {
     x: snakeX,
@@ -61,12 +70,24 @@ function drawSnake() {
   // detected side walls
   if (snakeX < 0 || snakeX > canvas.width - dim || snakeY < 0 || snakeY > canvas.height - dim) {
 
-    clearInterval(game);
-    alert("game over!")   //here we need to replace alert with function gameover
 
+    clearInterval(game);
+    dead.play();
+
+    // alert("game over!")   //here we need to replace alert with function gameover
+    //document.getElementById("displayScore").innerHTML = "you lose!"
+
+    ctx.fillStyle = "red";
+    ctx.fillRect(100, 50, 400, 200);
+    ctx.fillStyle = "white";
+    ctx.font = "70px Changa one";
+    ctx.fillText("you lose", 200, 150);
+    ctx.font = "30px Changa one";
+    ctx.fillText("press F2 to restart the game", 140, 200);
   }
   // snake growing 
   snake.unshift(newHead);
+
 }
 
 
@@ -88,17 +109,18 @@ document.addEventListener("keydown", direction);
 function direction(event) {
   let key = event.keyCode;
   if (key == 37 && d != "RIGHT") {
-
+    move.play();
     d = "LEFT";
   } else if (key == 38 && d != "DOWN") {
+    move.play();
     d = "UP";
-
   } else if (key == 39 && d != "LEFT") {
+    move.play();
     d = "RIGHT";
-
+    move.play();
   } else if (key == 40 && d != "UP") {
+    move.play();
     d = "DOWN";
-
   }
 }
 
@@ -119,12 +141,13 @@ function updateGame() {
 let game = setInterval(updateGame, 200);
 
 
-//switch mode
-document.addEventListener("keydown", switchMode);
-function switchMode(event) {
+//restart the game
+document.addEventListener("keydown", restart);
+function restart(event) {
   let key = event.keyCode;
-  if (key == 32) {
-
+  if (key == 113) {
+    location.reload();
   }
 }
+
 
