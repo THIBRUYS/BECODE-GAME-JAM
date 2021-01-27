@@ -1,3 +1,4 @@
+
 // declare context
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
@@ -71,6 +72,7 @@ function drawSnake() {
   if (snakeX < 0 || snakeX > canvas.width - dim || snakeY < 0 || snakeY > canvas.height - dim) {
 
 
+
     clearInterval(game);
     dead.play();
 
@@ -84,7 +86,14 @@ function drawSnake() {
     ctx.fillText("you lose", 200, 150);
     ctx.font = "30px Changa one";
     ctx.fillText("press F2 to restart the game", 140, 200);
+
+    clearInterval(game);
+    alert("game over!")   //here we need to replace alert with function gameover
+    // EndGame()
   }
+
+
+
   // snake growing 
   snake.unshift(newHead);
 
